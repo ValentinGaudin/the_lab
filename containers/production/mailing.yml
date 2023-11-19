@@ -1,0 +1,8 @@
+services:
+  mailing:
+    restart: always
+    environment:
+      MH_AUTH_FILE: /home/mailhog/user_config/auth
+    labels:
+      - traefik.http.routers.mailing.entrypoints=websecure
+      - traefik.http.routers.mailing.tls.certresolver=httpsresolver

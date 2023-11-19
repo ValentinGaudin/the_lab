@@ -1,0 +1,33 @@
+services:
+  platform:
+    image: git.thecodingmachine.com:444/tcm-projects/${PROJECT_NAME}/platform:${CI_ENV}
+    restart: always
+    environment:
+      TEMPLATE_PHP_INI: production
+      SESSION_SECURE_COOKIE: 1
+      APP_KEY: ${APP_KEY}
+    volumes:
+      - platform_storage:/var/www/html/storage
+
+  platform_webserver:
+    image: git.thecodingmachine.com:444/tcm-projects/${PROJECT_NAME}/platform-webserver:${CI_ENV}
+    restart: always
+    volumes:
+      - platform_webserver_logs:/static-logs
+    labels:
+      - traefik.http.routers.platform_webserver.entrypoints=websecure
+      - traefik.http.routers.platform_webserver.tls.certresolver=httpsresolver
+
+  platform_cron:
+    extends: platform
+    image: git.thecodingmachine.com:444/tcm-projects/${PROJECT_NAME}/platform-cron:${CI_ENV}
+    restart: always
+
+  platform_queue_worker:
+    extends: platform
+    image: git.thecodingmachine.com:444/tcm-projects/${PROJECT_NAME}/platform-queue-worker:${CI_ENV}
+    restart: always
+
+volumes:
+  platform_storage:
+  platform_webserver_logs:
