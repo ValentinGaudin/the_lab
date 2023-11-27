@@ -1,7 +1,7 @@
 ######################
 ### PHP BASE IMAGE ###
 ######################
-FROM php:8.2-fpm-alpine AS platform-base
+FROM php:8.3-rc-fpm-alpine AS platform-base
 
 ARG DOCKER_UID
 ARG DOCKER_GID
@@ -66,65 +66,6 @@ COPY --chown=www-data:www-data ../platform .
 USER www-data
 
 RUN composer install --no-dev
-
-###########################
-### platform CRON IMAGE ####
-###########################
-FROM platform-base AS platform-cron-base
-
-USER root
-
-RUN apk add logrotate moreutils
-
-COPY docker/cron/crontasks /etc/crontabs/www-data
-COPY docker/cron/logrotate-cron.conf /etc/logrotate.d/cron
-
-RUN touch /var/log/cron.log
-RUN chown www-data:www-data /var/log/cron.log
-RUN chmod 644 /etc/logrotate.d/cron
-
-CMD ["crond", "-f"]
-
-#################################
-### platform CRON LOCAL IMAGE ####
-#################################
-FROM platform-cron-base AS platform-cron-local
-
-######################################
-### platform CRON PRODUCTION IMAGE ###
-######################################
-FROM platform-cron-base AS platform-cron-production
-
-COPY --from=platform-production /var/www/html /var/www/html
-
-##################################
-### QUEUE WORKER BASE IMAGE ######
-##################################
-FROM platform-base AS platform-queue-base
-
-USER root
-
-COPY docker/queue/docker-entrypoint /usr/local/bin/docker-queue-entrypoint
-RUN chmod +x /usr/local/bin/docker-queue-entrypoint
-
-RUN touch /var/log/queue.log
-RUN chown www-data:www-data /var/log/queue.log
-
-USER www-data
-ENTRYPOINT ["docker-queue-entrypoint"]
-
-##################################
-### QUEUE WORKER LOCAL IMAGE ###
-##################################
-FROM platform-queue-base AS platform-queue-local
-
-##################################
-### QUEUE WORKER PRODUCTION IMAGE ###
-##################################
-FROM platform-queue-base AS platform-queue-production
-
-COPY --from=platform-production /var/www/html /var/www/html
-
 ##################################
 ### WEBSERVER NGINX BASE IMAGE ###
 ##################################

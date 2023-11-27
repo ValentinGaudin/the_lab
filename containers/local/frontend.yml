@@ -1,0 +1,10 @@
+services:
+  client:
+    build:
+      context: ../client
+      target: client-local
+    volumes:
+      - ../client:/app:delegated
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.client.rule=Host(`${DOMAIN}`)
