@@ -15,10 +15,11 @@ test('users can authenticate using the login screen', function () {
     $user = User::factory()->create();
 
     $response = postJson('/login', [
-        '_token' => Session::token(),
         'email' => $user->email,
         'password' => 'password',
     ]);
+
+    dd(App::environment());
 
     $this->assertAuthenticated();
     $response->assertRedirect(RouteServiceProvider::HOME);
