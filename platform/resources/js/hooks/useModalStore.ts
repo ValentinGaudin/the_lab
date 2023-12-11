@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { create } from 'zustand';
-import { Nullable } from '@/types/Common';
+import { Nullable } from '@app/types/Common';
 
 export type Modal = {
 	name: string;

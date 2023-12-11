@@ -5,13 +5,10 @@ import { Navigation } from '@/Components/molecules';
 
 const Header = () => {
 	return (
-		<>
-			<header className="fixed top-0 h-24 w-full">
-				<Navigation />
-			</header>
+		<header className="fixed top-0 h-24 w-full">
+			<Navigation />
 			<ToggleTheme />
-		</>
-
+		</header>
 	);
 };
 

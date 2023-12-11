@@ -1,7 +1,7 @@
 ######################
 ### PHP BASE IMAGE ###
 ######################
-FROM php:8.3-rc-fpm-alpine AS platform-base
+FROM php:8.3-fpm-alpine AS platform-base
 
 ARG DOCKER_UID
 ARG DOCKER_GID
@@ -16,16 +16,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN chmod +x /usr/local/bin/install-php-extensions
 
 # Install default required extensions
-RUN install-php-extensions apcu calendar igbinary pcntl zip
-
-# Install http extension
-RUN install-php-extensions http
-
-# Install MySQL
-RUN install-php-extensions pdo_mysql mysqli
-
-# Install GD extension
-RUN install-php-extensions gd
+RUN install-php-extensions apcu calendar igbinary pcntl zip http pdo_mysql mysqli gd opcache intl
 
 # Change UID
 RUN apk --no-cache add shadow && \

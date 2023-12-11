@@ -130,12 +130,6 @@ const Authenticated = ({
 						>
 							Dashboard
 						</ResponsiveNavLink>
-						<ResponsiveNavLink
-							href={route('posts.index')}
-							active={route().current('posts.index')}
-						>
-							Dashboard
-						</ResponsiveNavLink>
 					</div>
 
 					<div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

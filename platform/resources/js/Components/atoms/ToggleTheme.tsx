@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useThemeStore } from '@/hooks';
+import { BeakerIcon } from '@/Components/atoms/icons';
 
 const ToggleTheme = () => {
 	const theme = useThemeStore((state) => state.theme);

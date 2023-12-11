@@ -1,12 +1,10 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-import { Nullable } from '@/types/Common';
-
 type ThemeKey = 'light' | 'dark';
 
 type ThemeStore = {
-	theme: Nullable<ThemeKey>;
+	theme: ThemeKey;
 	toggleTheme: () => void;
 };
 

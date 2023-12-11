@@ -24,7 +24,8 @@
 		"./resources/js/**/*.ts",
 		"./resources/js/**/*.d.ts",
 		"./resources/js/**/*.tsx",
-		"./vite.config.ts"
+		"./vite.config.ts",
+		"./tailwind.config.js"
 	],
 	"exclude": [
 		"./coverage/**/*.js",

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EssayArticleController\IndexEssayArticle;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,6 +23,14 @@ Route::get('/', function () {
         'inspiringQuote' => $inspire,
     ]);
 })->name('welcome');
+
+Route::prefix('essay')
+    ->as('essay.')
+    ->group(static function (): void {
+        Route::get('/', IndexEssayArticle::class)->name('index');
+//        Route::post('/', StoreController::class)->name('store');
+//        Route::get('/create', CreateController::class)->name('create');
+    });
 
 require __DIR__.'/guest.php';
 require __DIR__.'/auth.php';

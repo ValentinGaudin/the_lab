@@ -2,7 +2,7 @@ services:
   database_administration:
     image: phpmyadmin:latest
     environment:
-      PMA_HOSTS: database,queue_db
+      PMA_HOSTS: database
     labels:
       - traefik.enable=true
       - traefik.http.routers.database_administration.rule=Host(`pma.${DOMAIN}`)

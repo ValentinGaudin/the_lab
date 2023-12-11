@@ -9,6 +9,8 @@ import useModalStore from '@/hooks/useModalStore';
 
 import { PageProps } from '@/types';
 
+import ApplicationLogo from '@/Components/atoms/ApplicationLogo';
+
 type Props = {
 	auth: PageProps;
 	inspiringQuote: string;
@@ -17,22 +19,29 @@ type Props = {
 const Welcome = ({ auth, inspiringQuote }: Props) => {
 	const showModal = useModalStore((state) => state.showModal);
 
-	useEffect(() => {
-		showModal({
-			name: 'StartUp',
-			element: (
-				<StartUpModal
-					currentModal={'StartUp'}
-					inspiringQuote={inspiringQuote}
-				/>
-			),
-		});
-	}, []);
+	// useEffect(() => {
+	// 	showModal({
+	// 		name: 'StartUp',
+	// 		element: (
+	// 			<StartUpModal
+	// 				currentModal={'StartUp'}
+	// 				inspiringQuote={inspiringQuote}
+	// 			/>
+	// 		),
+	// 	});
+	// }, []);
 
 	return (
 		<>
 			<Head title="Welcome" />
-			<BaseTemplate></BaseTemplate>
+			<BaseTemplate>
+				<div
+					className={`flex flex-col justify-center items-center w-screen h-screen`}
+				>
+					<ApplicationLogo className="p-2" />
+					<h1 className="text-ternary">Le labo</h1>
+				</div>
+			</BaseTemplate>
 		</>
 	);
 };

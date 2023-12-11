@@ -1,10 +1,10 @@
 import React, { FormEventHandler, useRef, useState } from 'react';
-import DangerButton from '@/Components/atoms/DangerButton';
-import InputError from '@/Components/atoms/InputError';
-import InputLabel from '@/Components/atoms/InputLabel';
-import Modal from '@/Components/atoms/Modal';
-import SecondaryButton from '@/Components/atoms/SecondaryButton';
-import TextInput from '@/Components/atoms/TextInput';
+import DangerButton from '@app/Components/atoms/DangerButton';
+import InputError from '@app/Components/atoms/InputError';
+import InputLabel from '@app/Components/atoms/InputLabel';
+import Modal from '@app/Components/atoms/Modal';
+import SecondaryButton from '@app/Components/atoms/SecondaryButton';
+import TextInput from '@app/Components/atoms/TextInput';
 import { useForm } from '@inertiajs/react';
 
 export default function DeleteUserForm({

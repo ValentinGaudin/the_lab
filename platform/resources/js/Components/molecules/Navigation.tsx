@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NavLink from '@/Components/atoms/NavLink';
-import ApplicationLogo from '@/Components/atoms/ApplicationLogo';
 import ResponsiveNavLink from '@/Components/atoms/ResponsiveNavLink';
+import { BeakerIcon } from '@/Components/atoms/icons';
 
 const Navigation = () => {
 	const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -10,7 +10,7 @@ const Navigation = () => {
 	return (
 		<nav className="flex justify-between items-center sm:-my-px relative px-14">
 			<NavLink href={route('welcome')} active={route().current('welcome')}>
-				<ApplicationLogo />
+				<BeakerIcon className="w-14 h-14 fill-current" />
 			</NavLink>
 
 			<div className="items-center sm:hidden">
@@ -45,7 +45,12 @@ const Navigation = () => {
 			</div>
 
 			<div className="hidden sm:flex mr-10 space-x-8">
-				
+				<NavLink
+					href={route('essay.index')}
+					active={route().current('essay.index')}
+				>
+					Essaie
+				</NavLink>
 			</div>
 
 			<div

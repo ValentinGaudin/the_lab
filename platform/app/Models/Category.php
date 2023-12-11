@@ -12,6 +12,14 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes;
 
+    const string ESSAY_ARTICLE = 'essay';
+    const string ESSAY_EXPERIENCE = 'experience';
+
+    const array CATEGORIES = [
+        self::ESSAY_ARTICLE,
+        self::ESSAY_EXPERIENCE
+    ];
+
     protected $fillable = [
         'name',
     ];
