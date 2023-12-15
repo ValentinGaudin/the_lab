@@ -1,13 +1,11 @@
 import React from 'react';
 
-import { ToggleTheme } from '@/Components/atoms';
 import { Navigation } from '@/Components/molecules';
 
 const Header = () => {
 	return (
-		<header className="fixed top-0 h-24 w-full">
+		<header className="fixed z-50 top-0 h-24 w-full">
 			<Navigation />
-			<ToggleTheme />
 		</header>
 	);
 };

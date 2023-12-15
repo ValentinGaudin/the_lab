@@ -26,8 +26,8 @@ services:
       - traefik.enable=true
       - traefik.http.routers.platform_vite.rule=Host(`vite.${DOMAIN}`)
       - traefik.http.services.platform_vite.loadbalancer.server.port=5173
-    environment: 
-      # STARTUP COMMANDS
+    environment:
+      APP_NAME: ${APP_NAME}
       APP_URL: ${HTTP_PROTOCOL}://${DOMAIN}
       STARTUP_COMMAND_1: yarn
       STARTUP_COMMAND_2: yarn dev --host

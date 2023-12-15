@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EssayArticleController\DetailEssayArticle;
 use App\Http\Controllers\EssayArticleController\IndexEssayArticle;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::prefix('essay')
     ->as('essay.')
     ->group(static function (): void {
         Route::get('/', IndexEssayArticle::class)->name('index');
+        Route::get('/{slug}', DetailEssayArticle::class)->name('detail');
 //        Route::post('/', StoreController::class)->name('store');
 //        Route::get('/create', CreateController::class)->name('create');
     });

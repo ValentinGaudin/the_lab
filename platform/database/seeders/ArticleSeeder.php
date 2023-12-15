@@ -15,13 +15,13 @@ class ArticleSeeder extends Seeder
     {
         Article::factory()
             ->has(Category::factory(1)->categoryEssay())
-            ->count(1)
+            ->count(3)
             ->create()
         ;
 
         Article::factory()
             ->has(Category::factory(1)->categoryExperience())
-            ->count(1)
+            ->count(3)
             ->create()
         ;
     }

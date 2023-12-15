@@ -7,9 +7,48 @@
     @apply m-0 p-0 border-0 box-border;
 }
 
+/* Track */
+::-webkit-scrollbar-track {
+    @apply dark:bg-dark;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    @apply bg-white;
+}
+
+@layer base {
+    *, body, html {
+        font-family: 'Chakra Petch', monospace;
+        font-weight: 500;
+    }
+}
+
+.gradient {
+    @apply bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary via-ternary to-fifth
+}
+
 @font-face {
-    font-family: 'Orbitron';
+    font-family: 'Abang';
     font-style: normal;
     font-weight: 900;
-    src: url('../assets/fonts/Orbitron-Black.ttf') format('truetype');
+    src: url('../assets/fonts/Abang.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Chakra Petch';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/ChakraPetch-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Chakra Petch';
+    font-weight: 400;
+    src: url('../assets/fonts/ChakraPetch-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Chakra Petch';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/ChakraPetch-Bold.ttf') format('truetype');
 }

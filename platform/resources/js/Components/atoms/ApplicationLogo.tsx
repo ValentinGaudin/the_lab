@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 
-import appIcon from '@/../assets/icons/icon-app.svg';
+import appIcon from '@/../assets/icons/icon-applicatiobn.svg';
 
 const ApplicationLogo = ({
 	className,

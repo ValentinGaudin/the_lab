@@ -11,6 +11,7 @@ const StartUpModal = ({ currentModal, inspiringQuote }: Props) => {
 	const cleanQuote = DOMPurify.sanitize(inspiringQuote, {
 		USE_PROFILES: { html: true },
 	});
+
 	return (
 		<BaseModal
 			title={'Welcome'}
