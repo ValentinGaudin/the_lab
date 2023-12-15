@@ -10,6 +10,6 @@ class GetEssayArticle
 {
     public function __invoke(): Collection
     {
-        return Article::query()->ofCategory(Category::ESSAY_ARTICLE)->get();
+        return Article::query()->ofCategory(Category::ESSAY_ARTICLE)->with('categories')->get();
     }
 }

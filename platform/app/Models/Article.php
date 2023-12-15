@@ -68,7 +68,7 @@ class Article extends Model
         $readingTime = Str::wordCount(strip_tags($this->content)) / 240;
 
         return Attribute::make(
-            get: fn () => Number::format($readingTime)
+            get: fn () => round(Number::format($readingTime))
         );
     }
 }

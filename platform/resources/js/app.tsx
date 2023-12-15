@@ -8,8 +8,9 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { Modales } from '@/Components/organisms';
 import { useThemeStore } from '@/hooks';
+import { ToggleTheme } from '@/Components/atoms';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME;
 
 const Wrapper = ({ children }: PropsWithChildren) => {
 	const theme = useThemeStore((state) => state.theme);
@@ -23,11 +24,10 @@ const Wrapper = ({ children }: PropsWithChildren) => {
 	}, []);
 
 	return (
-		<div
-			className={`flex z-10 min-h-screen min-w-screen bg-white dark:bg-dark selection:text-white selection:bg-marble/70`}
-		>
+		<>
 			<Modales>{children}</Modales>
-		</div>
+			<ToggleTheme />
+		</>
 	);
 };
 

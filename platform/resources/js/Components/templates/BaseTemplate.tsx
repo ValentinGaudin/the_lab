@@ -1,13 +1,19 @@
 import React, { PropsWithChildren } from 'react';
 
 import { Header } from '@/Components/organisms';
+import BlobGroups from '@/Components/molecules/BlobGroups';
+import { Footer } from '@/Components/atoms';
 
 const BaseTemplate = ({ children }: PropsWithChildren) => {
 	return (
-		<div className="">
+		<>
 			<Header />
-			{children}
-		</div>
+			<>
+				<BlobGroups />
+				{children}
+			</>
+			<Footer />
+		</>
 	);
 };
 
