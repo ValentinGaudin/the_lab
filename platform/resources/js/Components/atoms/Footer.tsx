@@ -5,9 +5,9 @@ const Footer = () => {
 	const copyright = String.fromCodePoint(0x000a9);
 
 	return (
-		<footer>
+		<footer className="static bottom-0">
 			<FooterWave />
-			<div className={`w-full flex justify-center items-center invert`}>
+			<div className={`w-full flex justify-center items-center invert mb-2`}>
 				<p>
 					{`Made with ❤️ and for ❤️ by ${copyright} Valentin Gaudin ${new Date(
 						Date.now()

@@ -1,6 +1,6 @@
-import React, { HTMLProps, SVGProps } from 'react';
+import React, { HTMLProps } from 'react';
 
-const BlobRight = ({
+const BlobOne = ({
 	className,
 }: Pick<HTMLProps<HTMLElement>, 'className'>) => {
 	const blobSkewStyle = {
@@ -32,4 +32,4 @@ const BlobRight = ({
 	);
 };
 
-export default BlobRight;
+export default BlobOne;

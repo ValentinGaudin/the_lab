@@ -11,9 +11,11 @@ type Props = {
 };
 
 const MiniArticle = ({ article }: Props) => {
-	const cleanContent = DOMPurify.sanitize(article.content, {
-		USE_PROFILES: { html: true },
-	});
+	const cleanContent = useMemo(() => {
+		return DOMPurify.sanitize(article.content, {
+			USE_PROFILES: { html: true },
+		});
+	}, [article.content]);
 
 	const isNewPoste = useMemo(() => {
 		const now = new Date();
@@ -57,7 +59,7 @@ const MiniArticle = ({ article }: Props) => {
 							))}
 					</div>
 					<div className="mt-8 text-sm leading-6 line-clamp-3 lg:line-clamp-6">
-						<p>{cleanContent}</p>
+						{cleanContent}
 					</div>
 					<div className="mt-8 flex justify-end md:justify-start">
 						<Link

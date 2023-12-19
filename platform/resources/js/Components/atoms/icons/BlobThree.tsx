@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react';
 
-const BlobMiddle = ({ className }: SVGProps<unknown>) => {
+const BlobThree = ({ className }: SVGProps<unknown>) => {
 	return (
 		<svg
 			version="1.1"
@@ -31,4 +31,4 @@ const BlobMiddle = ({ className }: SVGProps<unknown>) => {
 	);
 };
 
-export default BlobMiddle;
+export default BlobThree;

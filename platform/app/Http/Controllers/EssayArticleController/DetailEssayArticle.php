@@ -13,7 +13,7 @@ class DetailEssayArticle
 
         dd($essayArticle($slug));
 
-        return Inertia::render('Essay/Essays', [
+        return Inertia::render('Blog/EssayCard', [
             'essay' => $essayArticle
         ]);
     }

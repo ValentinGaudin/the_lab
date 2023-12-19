@@ -7,7 +7,7 @@ type Props = {
 	articles: Article[];
 };
 
-const Essays = ({ articles }: Props) => {
+const Essay = ({ articles }: Props) => {
 	return (
 		<BaseTemplate>
 			<PageTitle title={'Essai'} />
@@ -25,4 +25,4 @@ const Essays = ({ articles }: Props) => {
 	);
 };
 
-export default Essays;
+export default Essay;

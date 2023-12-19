@@ -11,14 +11,12 @@ const Navigation = () => {
 		useState(false);
 
 	return (
-		<nav
-			className="border-b border-solid border-black/50 dark:border-white/50"
-		>
+		<nav className="border-b border-solid border-black/50 dark:border-white/50 dark:bg-black/25 bg-white/25">
 			<div
 				className="
 				flex justify-between items-center
-				sm:-my-px relative px-14 py-2
-				before:absolute before:content-[''] before:bottom-[0.5px] before:left-0 before:w-full before:h-[calc(100%+10px)] before:backdrop-blur
+				sm:-my-px relative px-14 py-4
+				before:absolute before:content-[''] before:bottom-[0.5px] before:left-0 before:w-full before:h-[calc(100%+10px)] before:backdrop-blur before:-z-10
 				backdrop-blur"
 			>
 				<NavLink href={route('welcome')} active={route().current('welcome')}>
@@ -59,11 +57,25 @@ const Navigation = () => {
 				</div>
 
 				<div className="hidden sm:flex mr-10 space-x-8">
+					{/*{auth && (*/}
+					{/*	<NavLink*/}
+					{/*		href={route('dashboard')}*/}
+					{/*		active={route().current('dashboard')}*/}
+					{/*	>*/}
+					{/*		Dashboard*/}
+					{/*	</NavLink>*/}
+					{/*)}*/}
 					<NavLink
 						href={route('essay.index')}
 						active={route().current('essay.index')}
 					>
 						Essai
+					</NavLink>
+					<NavLink
+						href={route('experience.index')}
+						active={route().current('experience.index')}
+					>
+						Expérience
 					</NavLink>
 				</div>
 

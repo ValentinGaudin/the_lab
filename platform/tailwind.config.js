@@ -12,9 +12,12 @@ export default {
 	],
 	theme: {
 		extend: {
+			blur: {
+				'4xl': '80px',
+			},
 			fontFamily: {
 				sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-				title: ['Abang', 'monospace', 900],
+				title: ['Abang', 'monospace'],
 			},
 			colors: {
 				primary: {
@@ -51,72 +54,17 @@ export default {
 			},
 			animation: {
 				fillError: 'fillBackground 4s linear forwards',
-				moveHorizontally: 'moveHorizontally 1s infinite;',
-				traverseUp: 'traverseUp 10s infinite',
-				traverseUpDown: 'traverseUpDown 10s infinite',
 				wave: 'wave 8s linear infinite',
 				secondWave: 'wave 10s linear infinite',
 				thirdWave: 'wave 16s linear infinite',
-				drop: 'drop 10.9s linear infinite normal',
-				drop2: 'drop 20s linear infinite normal',
-				drop3: 'drop 12s linear infinite normal',
-				drop4: 'drop 15.4s linear infinite normal',
-				drop5: 'drop 16.5s linear infinite normal',
-				drop6: 'drop 14.3s linear infinite normal',
+				gradientMouvement: 'gradientMouvement 1s ease infinite',
+				linearGradientLeft: 'linearGradientLeft 10s linear infinite',
+				linearGradientRight: 'linearGradientRight 10s linear infinite',
 			},
 			keyframes: {
 				fillBackground: {
 					'0%': { width: '0%' },
 					'100%': { width: '100.8%' },
-				},
-				moveHorizontally: {
-					'0%, 100%': {
-						transform: 'translateX(-25%)',
-						'animation-timing-function': 'cubic-bezier(0.8,0,1,1)',
-					},
-					'50%': {
-						transform: 'none',
-						'animation-timing-function': 'cubic-bezier(0,0,0.2,1)',
-					},
-				},
-				traverseUp: {
-					'0%, 100%': {
-						transform: 'translateY(-40%)',
-						'animation-timing-function': 'cubic-bezier(0.8,0,1,1)',
-					},
-					'50%': {
-						transform: 'translateY(140%)',
-						'animation-timing-function': 'cubic-bezier(0,0,0.2,1)',
-					},
-				},
-				traverseUpDown: {
-					'0%': {
-						transform: 'translateY(100%)',
-						'animation-timing-function': 'cubic-bezier(0.8,0,1,1)',
-						opacity: '1',
-					},
-					'100%': {
-						transform: 'translateY(-1000%)',
-						'animation-timing-function': 'cubic-bezier(0,0,0.2,1)',
-						opacity: '0.5',
-					},
-				},
-				drop: {
-					'0%': {
-						transform: 'translateY(25px)',
-					},
-					'30%': {
-						transform: 'translateY(-20px) scale(.1)',
-					},
-					'30.001% ': {
-						transform: 'translateY(25px) scale(1)',
-					},
-					'70%': {
-						transform: 'translateY(55px)',
-					},
-					'100%': {
-						transform: 'translateY(-10px) scale(.1)',
-					},
 				},
 				wave: {
 					to: { transform: 'translateX(-100%)' },
@@ -197,6 +145,37 @@ export default {
 					},
 					'100%': {
 						transform: 'scaleX(.9) scaleY(1)',
+					},
+				},
+				gradientMouvement: {
+					'0%': {
+						'background-position': '0% 0%',
+					},
+					'50%': {
+						'background-position': '50% 0%',
+					},
+					'100%': {
+						'background-position': '100% 0%',
+					},
+				},
+				linearGradientLeft: {
+					'0%, 100%': {
+						transform:
+							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-27deg) skew(0deg, 0deg)',
+					},
+					'50%': {
+						transform:
+							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-42deg) skew(0deg, 0deg)',
+					},
+				},
+				linearGradientRight: {
+					'0%, 100%': {
+						transform:
+							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(42deg) skew(0deg, 0deg)',
+					},
+					'50%': {
+						transform:
+							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(35deg) skew(0deg, 0deg)',
 					},
 				},
 			},

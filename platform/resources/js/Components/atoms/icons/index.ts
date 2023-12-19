@@ -1,6 +1,6 @@
 export { default as BeakerIcon } from './BeakerIcon';
-export { default as BlobLeft } from './BlobLeft';
-export { default as BlobMiddle } from './BlobMiddle';
-export { default as BlobRight } from './BlobRight';
+export { default as BlobOne } from './BlobOne';
+export { default as BlobTwo } from './BlobTwo';
+export { default as BlobThree } from './BlobThree';
 export { default as FooterWave } from './FooterWave';
 export { default as GearBeakerIcon } from './GearBeakerIcon';

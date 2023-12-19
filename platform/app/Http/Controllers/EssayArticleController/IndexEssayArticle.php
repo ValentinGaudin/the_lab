@@ -10,7 +10,7 @@ class IndexEssayArticle
 {
     public function __invoke(GetEssayArticle $essayArticle): Response
     {
-        return Inertia::render('Essay/Essays', [
+        return Inertia::render('Blog/Essay', [
             'articles' => $essayArticle()
         ]);
     }

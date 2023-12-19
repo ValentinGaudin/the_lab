@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Essay = () => {
+const EssayCard = () => {
 	return (
 		<div>
 			<h1>toto</h1>
@@ -8,4 +8,4 @@ const Essay = () => {
 	);
 };
 
-export default Essay;
+export default EssayCard;

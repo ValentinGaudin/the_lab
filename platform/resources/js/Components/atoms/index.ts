@@ -2,6 +2,7 @@ export { default as ApplicationLogo } from './ApplicationLogo';
 export { default as BaseModal } from './BaseModal';
 export { default as Footer } from './Footer';
 export { default as ToggleTheme } from './ToggleTheme';
+export { default as LinearBackGround } from './LinearBackGround';
 export { default as MiniArticle } from './MiniArticle';
 export { default as MiniCategory } from './MiniCategory';
 export { default as Modal } from './Modal';

@@ -19,6 +19,7 @@ class ArticleFactory extends Factory
         return [
             'title' => fake()->words(5, true),
             'slug' => fake()->slug,
+            'user_id' => 1,
             'content' => fake()->randomHtml,
         ];
     }

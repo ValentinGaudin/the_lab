@@ -7,9 +7,14 @@
     @apply m-0 p-0 border-0 box-border;
 }
 
+/* width */
+::-webkit-scrollbar {
+    @apply w-1 h-1;
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
-    @apply dark:bg-dark;
+    @apply dark:bg-transparent;
 }
 
 /* Handle */
@@ -31,10 +36,9 @@
 @font-face {
     font-family: 'Abang';
     font-style: normal;
-    font-weight: 900;
-    src: url('../assets/fonts/Abang.otf') format('truetype');
+    font-weight: 500;
+    src: url('../assets/fonts/Abang.otf') format('opentype');
 }
-
 @font-face {
     font-family: 'Chakra Petch';
     font-style: italic;
