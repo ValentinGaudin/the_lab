@@ -1,12 +1,14 @@
 export { default as ApplicationLogo } from './ApplicationLogo';
+export { default as ArticleContent } from './ArticleContent';
+export { default as ArticleList } from './ArticleList';
 export { default as BaseModal } from './BaseModal';
 export { default as Footer } from './Footer';
 export { default as ToggleTheme } from './ToggleTheme';
 export { default as LinearBackGround } from './LinearBackGround';
-export { default as MiniArticle } from './MiniArticle';
 export { default as MiniCategory } from './MiniCategory';
 export { default as Modal } from './Modal';
 export { default as NavLink } from './NavLink';
 export { default as PageTitle } from './PageTitle';
 export { default as ResponsiveNavLink } from './ResponsiveNavLink';
 export { default as StartUpModal } from './StartUpModal';
+export { default as TopArticle } from './TopArticle';

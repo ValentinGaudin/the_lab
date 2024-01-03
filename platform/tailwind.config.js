@@ -12,7 +12,11 @@ export default {
 	],
 	theme: {
 		extend: {
+			bottom: {
+				18: '4.5rem',
+			},
 			blur: {
+				xs: '2px',
 				'4xl': '80px',
 			},
 			fontFamily: {
@@ -22,18 +26,21 @@ export default {
 			colors: {
 				primary: {
 					DEFAULT: '#2400ff',
+					light: '#3A1BFF',
+					dark: '#150194',
 				},
 				secondary: {
-					DEFAULT: '#0087ff',
+					DEFAULT: '#ff1d7a',
+					light: '#FF4A93',
+					dark: '#F60063',
 				},
 				ternary: {
-					DEFAULT: '#ff1d7a',
-				},
-				fourth: {
 					DEFAULT: '#f5381b',
+					light: '#FF6249',
+					dark: '#9D1500',
 				},
-				fifth: {
-					DEFAULT: '#ff5335',
+				quaternary: {
+					DEFAULT: '#e7ce94',
 				},
 				marble: {
 					DEFAULT: '#F2F8FC',
@@ -51,15 +58,21 @@ export default {
 					light: '#111015',
 					DEFAULT: '#151623',
 				},
+				other: {
+					DEFAULT: '#e7ce94',
+				},
 			},
 			animation: {
 				fillError: 'fillBackground 4s linear forwards',
-				wave: 'wave 8s linear infinite',
-				secondWave: 'wave 10s linear infinite',
-				thirdWave: 'wave 16s linear infinite',
-				gradientMouvement: 'gradientMouvement 1s ease infinite',
-				linearGradientLeft: 'linearGradientLeft 10s linear infinite',
-				linearGradientRight: 'linearGradientRight 10s linear infinite',
+				wave: 'wave 18s linear infinite',
+				secondWave: 'wave 16s linear infinite',
+				thirdWave: 'wave 20s linear infinite',
+				gradientMouvementHorizontal:
+					'gradientMouvementHorizontal 10s ease infinite',
+				gradientMouvementVertical:
+					'gradientMouvementVertical 10s ease infinite',
+				linearGradientLeft: 'linearGradientLeft 3s linear infinite',
+				linearGradientRight: 'linearGradientRight 3s linear infinite',
 			},
 			keyframes: {
 				fillBackground: {
@@ -147,35 +160,40 @@ export default {
 						transform: 'scaleX(.9) scaleY(1)',
 					},
 				},
-				gradientMouvement: {
-					'0%': {
-						'background-position': '0% 0%',
+				gradientMouvementHorizontal: {
+					'0%, 100%': {
+						'background-position': 'left',
 					},
 					'50%': {
-						'background-position': '50% 0%',
+						'background-position': 'right',
 					},
-					'100%': {
-						'background-position': '100% 0%',
+				},
+				gradientMouvementVertical: {
+					'0%, 100%': {
+						'background-position': 'top',
+					},
+					'50%': {
+						'background-position': 'bottom',
 					},
 				},
 				linearGradientLeft: {
 					'0%, 100%': {
 						transform:
-							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-27deg) skew(0deg, 0deg)',
+							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
 					},
 					'50%': {
 						transform:
-							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-42deg) skew(0deg, 0deg)',
+							'translate3d(0px, 0px, 150px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
 					},
 				},
 				linearGradientRight: {
 					'0%, 100%': {
 						transform:
-							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(42deg) skew(0deg, 0deg)',
+							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
 					},
 					'50%': {
 						transform:
-							'translate3d(0px, 0px, 0px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(35deg) skew(0deg, 0deg)',
+							'translate3d(0px, 0px, 550px) scale3d(1.1, 1.1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
 					},
 				},
 			},

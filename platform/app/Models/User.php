@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends \Canvas\Models\User
 {
     use HasApiTokens;
     use HasFactory;
@@ -47,11 +49,20 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * @return HasMany<Article>
+     * @return HasMany<Post>
      */
     public function articles(): HasMany
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Post::class);
+    }
+
+    /**
+     * @return MorphTo<Model, User>
+     */
+    public function userable(): MorphTo
+    {
+        return $this
+            ->morphTo();
     }
 
     public function isAdmin(): bool

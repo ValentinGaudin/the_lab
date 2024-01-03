@@ -21,10 +21,17 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'id' => fake()->uuid,
             'name' => fake()->name(),
-            'email' => 'thelab@localhost.com',
-            'email_verified_at' => now(),
+            'email' => fake()->email,
+            'username' => fake()->userName,
             'password' => static::$password ??= Hash::make('password'),
+            'summary' => '',
+            'avatar' => '',
+            'dark_mode' => '',
+            'digest' => '',
+            'locale' => '',
+            'role' => '',
             'remember_token' => Str::random(10),
         ];
     }

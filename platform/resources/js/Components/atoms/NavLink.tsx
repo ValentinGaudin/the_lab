@@ -13,8 +13,8 @@ const NavLink = ({
 			className={
 				'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ' +
 				(active
-					? 'border-dark-blue dark:border-cold-steel text-gray-900 dark:text-gray-100 focus:border-indigo-700 '
-					: 'border-transparent text-white dark:text-dark-blue hover:text-gray-700 dark:hover:text-gray-300 hover:border-cold-steel dark:hover:border-cold-steel focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 ') +
+					? 'border-dark-blue dark:border-cold-steel text-dark-blue dark:text-cold-steel '
+					: 'border-transparent text-dark-blue dark:text-cold-steel hover:text-dark-blue/70 dark:hover:text-cold-steel/70 dark:hover:border-cold-steel hover:border-dark-blue dark:focus:text-pearl focus:text-primary-light focus:border-primary-light dark:focus:border-pearl ') +
 				className
 			}
 		>

@@ -1,5 +1,7 @@
 <?php
 
+use League\Flysystem\Visibility;
+
 return [
 
     /*
@@ -41,6 +43,14 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'internal' => [
+            'driver' => 'local',
+            'root' => storage_path('app/internal'),
+            'url' => env('APP_URL').'/internal',
+            'visibility' => Visibility::PRIVATE,
             'throw' => false,
         ],
 

@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\EssayArticleController\DetailEssayArticle;
-use App\Http\Controllers\EssayArticleController\IndexEssayArticle;
-use App\Http\Controllers\ExperienceArticleController\DetailExperienceArticle;
-use App\Http\Controllers\ExperienceArticleController\IndexExperienceArticle;
+use App\Http\Controllers\Blog\BlogDetailArticle;
+use App\Http\Controllers\Blog\BlogIndexController;
+use App\Http\Controllers\Blog\IndexEssayArticle;
+use App\Http\Controllers\Blog\IndexExperienceArticle;
+use App\Http\Controllers\InternalStorageController;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,27 +28,36 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-Route::prefix('blog')
-    ->group(static function(): void {
-        Route::prefix('essay')
-            ->as('essay.')
-            ->group(static function (): void {
-                Route::get('/', IndexEssayArticle::class)->name('index');
-                Route::get('/{slug}', DetailEssayArticle::class)->name('detail');
-//        Route::post('/', StoreController::class)->name('store');
-//        Route::get('/create', CreateController::class)->name('create');
-            });
+Route::prefix('{locale}')
+    ->group(static function (): void {
+        Route::get('/', BlogIndexController::class)->name('index');
 
-        Route::prefix('experience')
-            ->as('experience.')
+        Route::prefix('blog')
             ->group(static function (): void {
-                Route::get('/', IndexExperienceArticle::class)->name('index');
-                Route::get('/{slug}', DetailExperienceArticle::class)->name('detail');
-//        Route::post('/', StoreController::class)->name('store');
-//        Route::get('/create', CreateController::class)->name('create');
+                Route::prefix('')
+                    ->as('blog.')
+                    ->group(static function (): void {
+                        Route::get('/', BlogIndexController::class)->name('index');
+                        Route::get('/{post:slug}', BlogDetailArticle::class)->name('detail');
+
+                        Route::prefix('essay')
+                            ->as('essay.')
+                            ->group(static function (): void {
+                                Route::get('/', IndexEssayArticle::class)->name('index');
+                            });
+
+                        Route::prefix('experience')
+                            ->as('experience.')
+                            ->group(static function (): void {
+                                Route::get('/', IndexExperienceArticle::class)->name('index');
+                            });
+                    });
             });
     });
 
-
-require __DIR__.'/guest.php';
-require __DIR__.'/auth.php';
+Route::prefix('internal')
+    ->as('internal.')
+    ->group(static function (): void {
+        Route::get('posts/banner/{file}', InternalStorageController::class)
+            ->name('articles.banner');
+    });

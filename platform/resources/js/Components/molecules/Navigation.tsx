@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
 	ApplicationLogo,
 	ResponsiveNavLink,
 	NavLink,
+	ToggleTheme,
 } from '@/Components/atoms';
+import useLocale from '@/hooks/useLocale';
 
 const Navigation = () => {
 	const [showingNavigationDropdown, setShowingNavigationDropdown] =
 		useState(false);
+
+	const { locale } = useLocale();
 
 	return (
 		<nav className="border-b border-solid border-black/50 dark:border-white/50 dark:bg-black/25 bg-white/25">
@@ -19,7 +23,10 @@ const Navigation = () => {
 				before:absolute before:content-[''] before:bottom-[0.5px] before:left-0 before:w-full before:h-[calc(100%+10px)] before:backdrop-blur before:-z-10
 				backdrop-blur"
 			>
-				<NavLink href={route('welcome')} active={route().current('welcome')}>
+				<NavLink
+					href={route('welcome', [locale])}
+					active={route().current('welcome', [locale])}
+				>
 					<ApplicationLogo className="w-14 h-14 fill-current" />
 				</NavLink>
 
@@ -66,17 +73,24 @@ const Navigation = () => {
 					{/*	</NavLink>*/}
 					{/*)}*/}
 					<NavLink
-						href={route('essay.index')}
-						active={route().current('essay.index')}
+						href={route(`blog.index`, [locale])}
+						active={route().current(`blog.index`, [locale])}
 					>
-						Essai
+						Blog
 					</NavLink>
 					<NavLink
-						href={route('experience.index')}
-						active={route().current('experience.index')}
+						href={route('blog.essay.index', [locale])}
+						active={route().current('blog.essay.index', [locale])}
 					>
-						Expérience
+						Essais
 					</NavLink>
+					<NavLink
+						href={route('blog.experience.index', [locale])}
+						active={route().current('blog.experience.index', [locale])}
+					>
+						Expériences
+					</NavLink>
+					<ToggleTheme />
 				</div>
 
 				<div

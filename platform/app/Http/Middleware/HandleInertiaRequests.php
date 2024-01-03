@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -39,6 +40,19 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
+            'locale' => App::getLocale(),
+            'language' => function () {
+                if (! file_exists(resource_path('lang/'.\Illuminate\Support\Facades\App::getLocale()
+                    .'/'.App::getLocale().'.json'))) {
+                    return [];
+                }
+
+                $file = file_get_contents(
+                    resource_path('lang/'.App::getLocale().'/'
+                        .App::getLocale().'.json'));
+
+                return is_string($file) ? json_decode($file, true) : null;
+            },
         ];
     }
 }
