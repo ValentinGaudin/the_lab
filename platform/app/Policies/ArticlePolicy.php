@@ -29,7 +29,7 @@ class ArticlePolicy
      */
     public function create(User $user): bool|Response
     {
-        return true;
+        return $user;
     }
 
     /**

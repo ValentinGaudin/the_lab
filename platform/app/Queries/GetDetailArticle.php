@@ -3,8 +3,6 @@
 namespace App\Queries;
 
 use App\Models\Post;
-use App\Models\Tag;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 final class GetDetailArticle
 {
@@ -12,7 +10,6 @@ final class GetDetailArticle
     {
         return Post::query()
             ->where('slug', $slug)
-            ->firstOrFail()
-            ;
+            ->firstOrFail();
     }
 }

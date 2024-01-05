@@ -4,7 +4,7 @@ const FooterWave = () => {
 	return (
 		<svg
 			className="w-screen fixed bottom-0 right-0 overflow-hidden"
-			viewBox="0 0 120 18"
+			viewBox="0 0 120 19"
 		>
 			<defs>
 				<filter id="goo">

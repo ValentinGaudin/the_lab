@@ -12,7 +12,12 @@ const ArticleContent = ({ content }: Props) => {
 		});
 	}, [content]);
 
-	return <span dangerouslySetInnerHTML={{ __html: cleanContent }} />;
+	return (
+		<span
+			className="html-content transition-colors duration-500"
+			dangerouslySetInnerHTML={{ __html: cleanContent }}
+		/>
+	);
 };
 
 export default ArticleContent;

@@ -6,9 +6,7 @@ namespace App\Models;
 
 use App\Models\Scopes\DraftPostScope;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Facades\Storage;
 
 final class Post extends \Canvas\Models\Post
 {
@@ -44,12 +42,12 @@ final class Post extends \Canvas\Models\Post
     /**
      * @var string[]
      */
-    protected $appends = ['read_time', 'featured_banner'];
+    protected $appends = ['read_time'];
 
     /**
      * @var string[]
      */
-    protected $with = ['tags', 'user'];
+    protected $with = ['tags', 'topic', 'user'];
 
     /**
      * Get the route key for the model.
@@ -68,7 +66,7 @@ final class Post extends \Canvas\Models\Post
     }
 
     /**
-     * @param Builder<Post> $builder
+     * @param  Builder<Post>  $builder
      */
     public function scopeOfTag(Builder $builder, string $tag): void
     {
@@ -78,12 +76,12 @@ final class Post extends \Canvas\Models\Post
     }
 
     /**
-     * @return Attribute<string, never>
+     * @param  Builder<Post>  $builder
      */
-    public function featuredBanner(): Attribute
+    public function scopeOfTopic(Builder $builder, string $tag): void
     {
-        return Attribute::get(
-            get: fn () => $this->featured_image ?? 'posts/banner/default-banner.svg'
-        );
+        $builder->whereHas('topic', function (Builder $query) use ($tag) {
+            $query->where('name', $tag);
+        });
     }
 }

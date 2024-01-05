@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Creator;
+use App\Models\Contributor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Creator>
+ * @extends Factory<Contributor>
  */
 class CreatorFactory extends Factory
 {

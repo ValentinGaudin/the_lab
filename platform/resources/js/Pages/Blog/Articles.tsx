@@ -2,11 +2,12 @@ import React, { useMemo } from 'react';
 import { BaseTemplate } from '@/Components/templates';
 import { ArticleList, PageTitle, TopArticle } from '@/Components/atoms';
 
-import { Article } from '@/types/Article';
+import { Post } from '@/types/Post';
+import { Head } from '@inertiajs/react';
 
 type Props = {
 	title: string;
-	articles: Article[];
+	articles: Post[];
 };
 
 const Articles = ({ title, articles }: Props) => {
@@ -27,9 +28,10 @@ const Articles = ({ title, articles }: Props) => {
 
 	return (
 		<BaseTemplate>
+			<Head title="Blog" />
 			<PageTitle title={title} />
 			{!!filteredArticles && (
-				<div className="container mx-auto space-y-16">
+				<div className="container mx-auto p-2 space-y-16 mb-32">
 					<TopArticle article={filteredArticles.firstArticle} />
 					<section role="list" className="mb-64">
 						<div className="grid grid-cols-6 gap-5">

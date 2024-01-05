@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Carbon;
 
-class User extends \Canvas\Models\User
+/**
+ * @property string $email
+ * @property ?Carbon $email_verified_at
+ */
+final class User extends Userable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -25,7 +21,14 @@ class User extends \Canvas\Models\User
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
+        'summary',
+        'avatar',
+        'dark_mode',
+        'digest',
+        'locale',
+        'role',
     ];
 
     /**
@@ -46,6 +49,19 @@ class User extends \Canvas\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'digest' => 'boolean',
+        'dark_mode' => 'boolean',
+        'role' => 'int',
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'default_avatar',
+        'default_locale',
     ];
 
     /**
@@ -63,10 +79,5 @@ class User extends \Canvas\Models\User
     {
         return $this
             ->morphTo();
-    }
-
-    public function isAdmin(): bool
-    {
-        return $this->email === 'valentingaudin@gmail.com';
     }
 }

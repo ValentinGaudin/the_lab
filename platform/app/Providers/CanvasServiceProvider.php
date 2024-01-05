@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Support\ServiceProvider;
+use LogicException;
 
 class CanvasServiceProvider extends ServiceProvider
 {
@@ -19,17 +20,22 @@ class CanvasServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->app->booted(function () {
+            $timeZone = config('app.timezone');
+
+            if (! is_string($timeZone)) {
+                throw new LogicException('Expected string for $timeZone');
+            }
+
             $schedule = resolve(Schedule::class);
-            $schedule->command('canvas:digest')
+            $schedule
+                ->command('canvas:digest')
                 ->weekly()
                 ->mondays()
-                ->timezone(config('app.timezone'))
+                ->timezone($timeZone)
                 ->at('08:00')
                 ->when(function () {
                     return config('canvas.mail.enabled');

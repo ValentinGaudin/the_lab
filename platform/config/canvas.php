@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Post;
-
 return [
 
     /*
@@ -58,7 +56,7 @@ return [
 
     'storage_disk' => env('CANVAS_STORAGE_DISK', 'internal'),
 
-    'storage_path' => env('CANVAS_STORAGE_PATH', Post::BANNER_STORAGE_PATH),
+    'storage_path' => env('CANVAS_STORAGE_PATH', 'posts'),
 
     'upload_filesize' => env('CANVAS_UPLOAD_FILESIZE', 3145728),
 

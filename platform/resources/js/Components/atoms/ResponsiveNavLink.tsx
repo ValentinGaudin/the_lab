@@ -9,10 +9,10 @@ const ResponsiveNavLink = ({
 	return (
 		<Link
 			{...props}
-			className={`w-full flex items-start ps-3 pe-4 py-2 border-l-4 ${
+			className={`w-full flex items-end justify-end space-x-2 space-y-4 p-3 border-r-4 ${
 				active
-					? 'border-indigo-400 dark:border-indigo-600 text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/50 focus:text-indigo-800 dark:focus:text-indigo-200 focus:bg-indigo-100 dark:focus:bg-indigo-900 focus:border-indigo-700 dark:focus:border-indigo-300'
-					: 'border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 focus:text-gray-800 dark:focus:text-gray-200 focus:bg-gray-50 dark:focus:bg-gray-700 focus:border-gray-300 dark:focus:border-gray-600'
+					? 'border-primary-dark dark:border-secondary-light text-primary-dark dark:text-primary-light bg-secondary-dark/20 dark:bg-secondary-light/50 focus:text-primary-dark dark:focus:text-primary-light focus:bg-secondary-dark dark:focus:bg-secondary-light focus:border-secondary-dark dark:focus:border-secondary-dark'
+					: 'border-transparent text-gray-600 dark:text-gray-400 hover:text-ternary-dark dark:hover:text-ternary-light hover:bg-secondary-dark/50 dark:hover:bg-secondary-light/70 hover:border-secondary-dark dark:hover:border-secondary-light focus:text-primary-dark dark:focus:text-primary-light focus:bg-secondary-dark dark:focus:bg-secondary-light focus:border-secondary-dark dark:focus:border-secondary-light'
 			} text-base font-medium focus:outline-none transition duration-150 ease-in-out ${className}`}
 		>
 			{children}

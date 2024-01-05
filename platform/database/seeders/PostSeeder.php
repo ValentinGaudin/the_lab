@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Topic;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
@@ -14,12 +15,12 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         Post::factory()
-            ->has(Tag::factory(1)->tagEssay())
+            ->has(Topic::factory(1)->tagEssay())
             ->count(1)
             ->create();
 
         Post::factory()
-            ->has(Tag::factory(1)->tagExperience())
+            ->has(Topic::factory(1)->tagExperience())
             ->count(1)
             ->create();
     }

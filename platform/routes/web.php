@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Blog\BlogDetailArticle;
 use App\Http\Controllers\Blog\BlogIndexController;
-use App\Http\Controllers\Blog\IndexEssayArticle;
-use App\Http\Controllers\Blog\IndexExperienceArticle;
+use App\Http\Controllers\Blog\IndexEssayPost;
+use App\Http\Controllers\Blog\IndexExperiencePost;
+use App\Http\Controllers\Blog\TagController;
+use App\Http\Controllers\Blog\TopicController;
 use App\Http\Controllers\InternalStorageController;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Route;
@@ -34,23 +36,23 @@ Route::prefix('{locale}')
 
         Route::prefix('blog')
             ->group(static function (): void {
-                Route::prefix('')
-                    ->as('blog.')
+                Route::as('blog.')
                     ->group(static function (): void {
                         Route::get('/', BlogIndexController::class)->name('index');
+
+                        Route::prefix('topic')
+                            ->as('topic.')
+                            ->group(static function (): void {
+                                Route::get('/{topic:slug}', TopicController::class)->name('index');
+                            });
+
+                        Route::prefix('tag')
+                            ->as('tag.')
+                            ->group(static function (): void {
+                                Route::get('/{tag:slug}', TagController::class)->name('index');
+                            });
+
                         Route::get('/{post:slug}', BlogDetailArticle::class)->name('detail');
-
-                        Route::prefix('essay')
-                            ->as('essay.')
-                            ->group(static function (): void {
-                                Route::get('/', IndexEssayArticle::class)->name('index');
-                            });
-
-                        Route::prefix('experience')
-                            ->as('experience.')
-                            ->group(static function (): void {
-                                Route::get('/', IndexExperienceArticle::class)->name('index');
-                            });
                     });
             });
     });
@@ -58,6 +60,6 @@ Route::prefix('{locale}')
 Route::prefix('internal')
     ->as('internal.')
     ->group(static function (): void {
-        Route::get('posts/banner/{file}', InternalStorageController::class)
-            ->name('articles.banner');
+        Route::get('posts/images/{file}', InternalStorageController::class)
+            ->name('posts.images');
     });

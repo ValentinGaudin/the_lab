@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import {
 	ApplicationLogo,
@@ -23,10 +23,7 @@ const Navigation = () => {
 				before:absolute before:content-[''] before:bottom-[0.5px] before:left-0 before:w-full before:h-[calc(100%+10px)] before:backdrop-blur before:-z-10
 				backdrop-blur"
 			>
-				<NavLink
-					href={route('welcome', [locale])}
-					active={route().current('welcome', [locale])}
-				>
+				<NavLink href={route('welcome')} active={route().current('welcome')}>
 					<ApplicationLogo className="w-14 h-14 fill-current" />
 				</NavLink>
 
@@ -64,29 +61,21 @@ const Navigation = () => {
 				</div>
 
 				<div className="hidden sm:flex mr-10 space-x-8">
-					{/*{auth && (*/}
-					{/*	<NavLink*/}
-					{/*		href={route('dashboard')}*/}
-					{/*		active={route().current('dashboard')}*/}
-					{/*	>*/}
-					{/*		Dashboard*/}
-					{/*	</NavLink>*/}
-					{/*)}*/}
 					<NavLink
-						href={route(`blog.index`, [locale])}
-						active={route().current(`blog.index`, [locale])}
+						href={route(`blog.index`, locale)}
+						active={route().current(`blog.index`, locale)}
 					>
 						Blog
 					</NavLink>
 					<NavLink
-						href={route('blog.essay.index', [locale])}
-						active={route().current('blog.essay.index', [locale])}
+						href={route('blog.topic.index', [locale, 'essai'])}
+						active={route().current('blog.topic.index', [locale, 'essai'])}
 					>
 						Essais
 					</NavLink>
 					<NavLink
-						href={route('blog.experience.index', [locale])}
-						active={route().current('blog.experience.index', [locale])}
+						href={route('blog.topic.index', [locale, 'experience'])}
+						active={route().current('blog.topic.index', [locale, 'experience'])}
 					>
 						Expériences
 					</NavLink>
@@ -96,14 +85,29 @@ const Navigation = () => {
 				<div
 					className={`${
 						showingNavigationDropdown ? 'block' : 'hidden'
-					}  absolute top-[54px] right-0`}
+					} z-50 absolute top-24  w-full right-0 sm:hidden`}
 				>
-					<div className="pt-2 pb-3 space-y-1">
+					<div className="bg-gradient-to-b from-white/80 to-white/20 backdrop-blur drop-shadow-md space-y-2">
 						<ResponsiveNavLink
-							href={route('welcome')}
-							active={route().current('welcome')}
+							href={route(`blog.index`, locale)}
+							active={route().current(`blog.index`, locale)}
 						>
-							Dashboard
+							Blog
+						</ResponsiveNavLink>
+						<ResponsiveNavLink
+							href={route('blog.topic.index', [locale, 'essai'])}
+							active={route().current('blog.topic.index', [locale, 'essai'])}
+						>
+							Essais
+						</ResponsiveNavLink>
+						<ResponsiveNavLink
+							href={route('blog.topic.index', [locale, 'experience'])}
+							active={route().current('blog.topic.index', [
+								locale,
+								'experience',
+							])}
+						>
+							Expériences
 						</ResponsiveNavLink>
 					</div>
 

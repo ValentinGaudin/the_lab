@@ -12,13 +12,12 @@ class DraftPostScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  Builder<Post> $builder
+     * @param  Builder<Post>  $builder
      */
     public function apply(Builder $builder, Model $model): void
     {
         $builder
             ->whereNotNull('published_at')
-            ->orWhere('published_at', '>', now()->toDateTimeString())
-        ;
+            ->orWhere('published_at', '>', now()->toDateTimeString());
     }
 }
