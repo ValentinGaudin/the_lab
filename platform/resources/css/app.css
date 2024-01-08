@@ -35,6 +35,11 @@
     @apply bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary via-secondary to-ternary
 }
 
+.container-banner:has(.banner:hover)
+.banner:not(:hover) {
+    filter: grayscale(100%) brightness(50%);
+}
+
 @font-face {
     font-family: 'Abang';
     font-style: normal;

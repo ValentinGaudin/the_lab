@@ -7,6 +7,7 @@ use App\Http\Controllers\Blog\IndexExperiencePost;
 use App\Http\Controllers\Blog\TagController;
 use App\Http\Controllers\Blog\TopicController;
 use App\Http\Controllers\InternalStorageController;
+use App\Models\Post;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,11 +24,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    $inspire = Inspiring::quote();
-
-    return Inertia::render('Welcome', [
-        'inspiringQuote' => $inspire,
-    ]);
+    return Inertia::render('Welcome');
 })->name('welcome');
 
 Route::prefix('{locale}')

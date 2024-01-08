@@ -19,14 +19,14 @@ const PageTitle = ({ title }: Props) => {
 				animationStarted
 					? 'opacity-100 translate-x-0'
 					: '-translate-x-full opacity-0'
-			} flex justify-start items-center w-full mt-[150px] transition-all ease-out duration-500`}
+			} flex justify-start items-center w-full mt-[150px] transition-all ease-out duration-500 overflow-hidden`}
 		>
 			<h1
 				className={`font-bold bg-gradient-to-r from-primary-light dark:from-primary-dark via-secondary-light dark:via-secondary-dark to-ternary-light dark:to-ternary-dark animate-gradientMouvementHorizontal bg-[length:300%_100%] bg-clip-text text-transparent text-3xl lg:text-5xl capitalize px-12 transition-all ease-in duration-500`}
 			>
 				{title}
 			</h1>
-			<hr className="grow ms-4 border-solid border-2" />
+			<hr className="grow border-solid border-2" />
 		</div>
 	);
 };

@@ -58,9 +58,6 @@ export default {
 					light: '#111015',
 					DEFAULT: '#151623',
 				},
-				other: {
-					DEFAULT: '#e7ce94',
-				},
 			},
 			animation: {
 				fillError: 'fillBackground 4s linear forwards',

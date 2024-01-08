@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react';
 import { BaseTemplate } from '@/Components/templates';
-import { ArticleList, PageTitle, TopArticle } from '@/Components/atoms';
+import { ArticleList, TopArticle } from '@/Components/atoms';
 
 import { Post } from '@/types/Post';
-import { Head } from '@inertiajs/react';
 
 type Props = {
 	title: string;
@@ -27,14 +26,12 @@ const Articles = ({ title, articles }: Props) => {
 	}, [articles]);
 
 	return (
-		<BaseTemplate>
-			<Head title="Blog" />
-			<PageTitle title={title} />
+		<BaseTemplate title={title}>
 			{!!filteredArticles && (
-				<div className="container mx-auto p-2 space-y-16 mb-32">
+				<div className="mx-auto container space-y-16 mb-32">
 					<TopArticle article={filteredArticles.firstArticle} />
 					<section role="list" className="mb-64">
-						<div className="grid grid-cols-6 gap-5">
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-14 gap-y-10 mx-4 md:mx-10">
 							{!!filteredArticles.restOfArticles.length &&
 								filteredArticles.restOfArticles.map((article, i) => (
 									<ArticleList article={article} key={i} />

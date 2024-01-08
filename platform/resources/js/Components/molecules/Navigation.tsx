@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
 	ApplicationLogo,
@@ -9,25 +9,42 @@ import {
 import useLocale from '@/hooks/useLocale';
 
 const Navigation = () => {
+	const [animationStarted, setAnimationStarted] = useState(false);
 	const [showingNavigationDropdown, setShowingNavigationDropdown] =
 		useState(false);
 
 	const { locale } = useLocale();
 
+	useEffect(() => {
+		if (showingNavigationDropdown) {
+			document.body.classList.add('overflow-hidden');
+		} else {
+			document.body.classList.remove('overflow-hidden');
+		}
+	}, [showingNavigationDropdown]);
+
+	useEffect(() => {
+		if (showingNavigationDropdown) {
+			setTimeout(() => {
+				setAnimationStarted(true);
+			}, 300);
+		} else {
+			setAnimationStarted(false);
+		}
+	}, [showingNavigationDropdown]);
+
 	return (
-		<nav className="border-b border-solid border-black/50 dark:border-white/50 dark:bg-black/25 bg-white/25">
-			<div
-				className="
-				flex justify-between items-center
-				sm:-my-px relative px-14 py-4
-				before:absolute before:content-[''] before:bottom-[0.5px] before:left-0 before:w-full before:h-[calc(100%+10px)] before:backdrop-blur before:-z-10
-				backdrop-blur"
-			>
+		<nav className="sticky top-0 backdrop-blur w-full z-50">
+			<div className="flex justify-between items-center sm:-my-px relative px-10 py-4">
 				<NavLink href={route('welcome')} active={route().current('welcome')}>
-					<ApplicationLogo className="w-14 h-14 fill-current" />
+					<ApplicationLogo className="w-14 h-14 fill-current block md:hidden" />
+					<h1 className="hidden md:block text-xl font-title uppercase bg-gradient-to-r from-primary-dark via-secondary to-ternary animate-gradientMouvementHorizontal bg-[length:300%_100%] duration-500 bg-clip-text text-transparent">
+						Le labo
+					</h1>
 				</NavLink>
 
-				<div className="items-center sm:hidden">
+				<div className="flex items-center sm:hidden space-x-5">
+					<ToggleTheme />
 					<button
 						onClick={() =>
 							setShowingNavigationDropdown((previousState) => !previousState)
@@ -60,7 +77,7 @@ const Navigation = () => {
 					</button>
 				</div>
 
-				<div className="hidden sm:flex mr-10 space-x-8">
+				<div className="hidden sm:flex space-x-8">
 					<NavLink
 						href={route(`blog.index`, locale)}
 						active={route().current(`blog.index`, locale)}
@@ -83,11 +100,12 @@ const Navigation = () => {
 				</div>
 
 				<div
-					className={`${
-						showingNavigationDropdown ? 'block' : 'hidden'
-					} z-50 absolute top-24  w-full right-0 sm:hidden`}
+					className={`${showingNavigationDropdown ? 'block' : 'hidden'} ${
+						animationStarted ? 'translate-x-0' : 'translate-x-full'
+					}
+					z-50 absolute top-24 w-full right-0 sm:hidden bg-gradient-to-b from-white/80 to-white/20 dark:from-gray-700/80 dark:to-gray-400/20 backdrop-blur-4xl transition-all duration-700`}
 				>
-					<div className="bg-gradient-to-b from-white/80 to-white/20 backdrop-blur drop-shadow-md space-y-2">
+					<div className="space-y-2">
 						<ResponsiveNavLink
 							href={route(`blog.index`, locale)}
 							active={route().current(`blog.index`, locale)}
@@ -109,12 +127,6 @@ const Navigation = () => {
 						>
 							Expériences
 						</ResponsiveNavLink>
-					</div>
-
-					<div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-						<div className="mt-3 space-y-1">
-							<ResponsiveNavLink href={route('welcome')} />
-						</div>
 					</div>
 				</div>
 			</div>

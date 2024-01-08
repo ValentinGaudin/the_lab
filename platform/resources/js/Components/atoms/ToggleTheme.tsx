@@ -10,7 +10,7 @@ const ToggleTheme = () => {
 		<div className="sticky">
 			<label
 				htmlFor="toggle-theme"
-				className="inline-flex items-center p-1 cursor-pointer bg-gray-300 dark:text-gray-800 rounded-full shadow-md drop-shadow-md dark:shadow-lg shadow-secondary-light dark:shadow-primary-light"
+				className="inline-flex items-center p-1 cursor-pointer bg-gray-300 dark:text-gray-800 rounded-full shadow-md drop-shadow-md dark:shadow-lg shadow-ternary-light dark:shadow-primary-light"
 			>
 				<div className="relative">
 					<input
@@ -20,8 +20,8 @@ const ToggleTheme = () => {
 						checked={theme === 'dark'}
 						onChange={toggleTheme}
 					/>
-					<div className="block bg-secondary-light dark:bg-primary-light shadow-sm w-7 md:w-12 h-[1.1rem] md:h-7 rounded-full cursor-pointer"></div>
-					<div className="peer-checked:translate-x-full bg-white absolute left-1 top-1 w-2.5 md:w-5 h-2.5 md:h-5 rounded-full transition-all duration-500 delay-100">
+					<div className="block bg-ternary-light dark:bg-primary-light shadow-sm w-9 md:w-12 h-[1.3rem] md:h-7 rounded-full cursor-pointer"></div>
+					<div className="peer-checked:translate-x-full bg-white absolute left-1 top-1 w-[0.8rem] md:w-5 h-[0.8rem] md:h-5 rounded-full transition-all duration-500 delay-100">
 						<span className="flex justify-center items-center w-full h-full">
 							{theme !== 'dark' ? (
 								<svg

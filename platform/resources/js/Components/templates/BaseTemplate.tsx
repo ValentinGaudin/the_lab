@@ -3,13 +3,18 @@ import React, { PropsWithChildren } from 'react';
 import { Header, LocaleProvider } from '@/Components/organisms';
 import { BlobGroups } from '@/Components/molecules';
 import { Footer } from '@/Components/atoms';
+import { Head } from '@inertiajs/react';
 
-const BaseTemplate = ({ children }: PropsWithChildren) => {
+const BaseTemplate = ({
+	children,
+	title,
+}: PropsWithChildren & { title?: string }) => {
 	return (
 		<LocaleProvider>
-			<div className="flex flex-col font-sans bg-white dark:bg-dark-blue">
-				<Header />
+			<Head title={title} />
+			<div className="flex flex-col relative min-h-screen bg-white dark:bg-dark-blue">
 				<BlobGroups />
+				<Header title={title} />
 				{children}
 				<Footer />
 			</div>

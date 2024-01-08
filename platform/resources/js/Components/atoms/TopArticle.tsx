@@ -23,10 +23,7 @@ const TopArticle = ({ article }: Props) => {
 	}, [article]);
 
 	return (
-		<article
-			className="flex flex-col justify-between items-start mt-10 p-4 dark:border-white rounded-lg bg-gradient-to-b from-gray-200 to-gray-50
-				dark:from-gray-700 dark:to-gray-800 backdrop-blur transition-all duration-500 ease-in shadow-sm hover:shadow-2xl"
-		>
+		<article className="flex flex-col justify-between items-start group mt-10 p-4 dark:border-white rounded-lg bg-gradient-to-br from-gray-200/90 to-gray-50/50 dark:from-dark-blue/80 dark:to-dark/50 backdrop-blur transition-all duration-300 ease-in shadow-sm hover:shadow-2xl hover:translate-y-1">
 			<div className="h-full w-full flex flex-col md:grid md:grid-cols-2 md:gap-x-8">
 				{isNewPoste && (
 					<span className="z-50 animate-ping duration-1000 absolute inline-flex h-4 w-4 rounded-full bg-primary-dark/80 dark:bg-ternary/80 opacity-75"></span>
@@ -36,7 +33,7 @@ const TopArticle = ({ article }: Props) => {
 					href={route('blog.detail', [locale, article.slug])}
 				>
 					<img
-						className="h-[350px] object-cover aspect-video rounded-xl drop-shadow-2xl"
+						className="h-[350px] object-cover aspect-video rounded-xl drop-shadow-2xl "
 						// src={article.featured_image}
 						src={`https://picsum.photos/200/300`}
 						alt={article.featured_image_caption}
@@ -50,7 +47,6 @@ const TopArticle = ({ article }: Props) => {
 							</h3>
 						</Link>
 						<div className="mt-4 flex justify-between items-center">
-
 							<div className="flex text-xs text-dark-blue space-x-1 dark:text-cold-steel">
 								<p className="text-xs text-primary-dark dark:text-secondary-light font-base transition-colors duration-500">
 									{article.created_at}
@@ -75,10 +71,13 @@ const TopArticle = ({ article }: Props) => {
 								))}
 						</div>
 					</div>
-					<p className="mt-8 text-sm leading-6 line-clamp-3 lg:line-clamp-6 text-dark-blue dark:text-cold-steel transition-colors duration-500">
-						<ArticleContent content={article.summary} />
-					</p>
-					<div className="mt-8 flex justify-end md:justify-start">
+					<Link href={route('blog.detail', [locale, article.slug])}>
+						<p className="mt-8 text-sm leading-6 line-clamp-3 lg:line-clamp-6 text-dark-blue dark:text-cold-steel transition-colors duration-500">
+							<ArticleContent content={article.summary} />
+						</p>
+					</Link>
+
+					<div className="mt-8 flex justify-end">
 						<Link
 							className="px-4 py-2 rounded-md text-xs border border-dark-blue dark:border-cold-steel text-dark-blue dark:text-cold-steel relative before:content-[''] before:absolute before:bg-gray-300/20 before:top-0 before:left-0 before:w-0 before:h-full before:transition-all before:duration-500 hover:before:w-[100%] "
 							href={route('blog.detail', [locale, article.slug])}

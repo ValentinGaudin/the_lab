@@ -1,4 +1,5 @@
 import type { Page, PageProps, Errors, ErrorBag } from '@inertiajs/core';
+import { Tip } from '@/types/Tip';
 
 export type User = {
 	id: number;
@@ -16,6 +17,8 @@ declare global {
 			user: User;
 		};
 		locale: LocaleKey;
+		inspiringQuote: string;
+		tip: Tip;
 		[key: string]: any;
 	}
 }

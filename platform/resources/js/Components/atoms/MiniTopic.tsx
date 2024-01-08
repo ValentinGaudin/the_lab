@@ -18,7 +18,7 @@ const MiniTopic = ({
 		<Link
 			role="listitem"
 			href={route('blog.topic.index', [locale, topic.slug])}
-			className={`z-30 w-fit capitalize text-dark-blue dark:text-cold-steel drop-shadow-md text-sm lg:text-base hover:underline cursor-pointer ${className}`}
+			className={`z-30 w-fit text-xs lg:text-base font-base capitalize text-dark-blue dark:text-cold-steel drop-shadow-md hover:underline cursor-pointer ${className}`}
 		>
 			<p>{topic.name}</p>
 		</Link>

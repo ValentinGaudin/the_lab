@@ -2,10 +2,7 @@ import React from 'react';
 
 const FooterWave = () => {
 	return (
-		<svg
-			className="w-screen fixed bottom-0 right-0 overflow-hidden"
-			viewBox="0 0 120 19"
-		>
+		<svg className="w-full overflow-hidden" viewBox="0 0 120 19">
 			<defs>
 				<filter id="goo">
 					<feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
